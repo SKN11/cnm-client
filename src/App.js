@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import Contacts from './components/Contacts'
 
 import './App.css';
@@ -15,7 +15,7 @@ function App() {
       </nav>
     { <div className="row"><Contacts/></div> }
 
-    {/* <div className="row"><SignUpCard/></div> */}
+    {<div className="row"><SignUpCard/></div>}
     
     </div>
     
