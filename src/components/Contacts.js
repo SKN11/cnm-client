@@ -22,6 +22,8 @@ componentDidMount()
     .then(response => response.json())
     .then(data => this.setState({contacts:data}))
 
+    //console.log("hi");g
+
 
     // fetch("http://localhost:8080/api/all-contact",
     // {
