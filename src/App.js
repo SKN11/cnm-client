@@ -13,7 +13,7 @@ function App() {
 
         </div>
       </nav>
-    { <div className="row"><Contacts/></div> }
+    {<div className="row"><Contacts/></div>}
 
     {<div className="row"><SignUpCard/></div>}
     
