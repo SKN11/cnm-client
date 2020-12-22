@@ -3,7 +3,10 @@ import Contacts from './components/Contacts'
 
 import './App.css';
 import SignUpCard from './components/SignUpCard';
+import TicTacToeMain from './components/TicTacToeMain';
 
+
+//acting as adapter
 function App() {
   return (
     <div className="container-fluid">
@@ -13,9 +16,9 @@ function App() {
 
         </div>
       </nav>
-    {<div className="row"><Contacts/></div>}
-
-    {<div className="row"><SignUpCard/></div>}
+    {/*<div className="row"><Contacts/></div>*/}
+    {<div className="row"><TicTacToeMain/></div>}
+    {/*<div className="row"><SignUpCard/></div> */}
     
     </div>
     
