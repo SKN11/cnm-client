@@ -4,6 +4,8 @@ import Contacts from './components/Contacts'
 import './App.css';
 import SignUpCard from './components/SignUpCard';
 import TicTacToeMain from './components/TicTacToeMain';
+import PersonMain from './personcomponents/PersonMain'
+import UserInputOutputMain from './personcomponents/UserInputOutputMain'
 
 
 //acting as adapter
@@ -17,9 +19,10 @@ function App() {
         </div>
       </nav>
     {/*<div className="row"><Contacts/></div>*/}
-    {<div className="row"><TicTacToeMain/></div>}
+    {/*<div className="row"><TicTacToeMain/></div>*/}
     {/*<div className="row"><SignUpCard/></div> */}
-    
+     {<PersonMain/>}
+     {/*<UserInputOutputMain/>*/}
     </div>
     
   );
