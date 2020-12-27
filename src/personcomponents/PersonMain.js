@@ -7,9 +7,9 @@ export default class PersonMain extends Component{
 
     state = {
         person:[
-            {name:'sam',age:27},
-            {name:'sky',age:13},
-            {name:'euro',age:7}
+            {id:'abc1',name:'sam',age:27},
+            {id:'abc2',name:'sky',age:13},
+            {id:'abc3',name:'euro',age:7}
         ]
     }
 
@@ -46,6 +46,34 @@ export default class PersonMain extends Component{
 
     }
 
+    nameChangeHandlerById = (event,id) =>
+    {
+        const personIndex = this.state.person.findIndex(p => {
+            return (p.id === id);
+        });
+        
+        const person = {...this.state.person[personIndex]};
+        person.name = event.target.value;
+
+        const persons = [...this.state.person];
+        persons[personIndex] = person;
+
+        this.setState({
+            person:persons
+        });
+
+    }
+
+    deleteFromPersonList = (index) => {
+        console.log("deketing"+index);
+        //const persons = this.state.person; //wrong aproach u r making mutable
+        //const persons = this.state.person.slice();
+        const persons = [...this.state.person]; //spread operator
+        persons.splice(index,1)
+        this.setState({person:persons});
+
+    }
+
     togglePersons = () => {
         const isShowPerson = this.state.showPerson;
         this.setState({showPerson:!isShowPerson});
@@ -63,7 +91,26 @@ export default class PersonMain extends Component{
     let persons = null;
        {/* use of conditional statement method 2*/}
     if(this.state.showPerson){
-        persons = (<div>
+        persons = (
+            <div>
+                {this.state.person.map((person,index) => {
+                    return <Person 
+                    name={person.name} 
+                    age={person.age}
+                    key={person.id}
+                    changed = {(event) => this.nameChangeHandlerById(event,person.id)}
+                    click={this.deleteFromPersonList.bind(this,index)
+                    }
+                    />
+                }
+
+
+                )}
+
+            </div>
+            
+
+        /*<div>
             <Person 
             changed={this.nameChangeHandler} 
             name={this.state.person[0].name} 
@@ -81,6 +128,7 @@ export default class PersonMain extends Component{
             age={this.state.person[2].age}
             ></Person>
                 </div>
+                */
             );
     }
 

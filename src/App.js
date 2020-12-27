@@ -6,6 +6,7 @@ import SignUpCard from './components/SignUpCard';
 import TicTacToeMain from './components/TicTacToeMain';
 import PersonMain from './personcomponents/PersonMain'
 import UserInputOutputMain from './personcomponents/UserInputOutputMain'
+import ListMain from './listassignment/Listmain'
 
 
 //acting as adapter
@@ -21,7 +22,8 @@ function App() {
     {/*<div className="row"><Contacts/></div>*/}
     {/*<div className="row"><TicTacToeMain/></div>*/}
     {/*<div className="row"><SignUpCard/></div> */}
-     {<PersonMain/>}
+     {<PersonMain/> }
+     {/*<ListMain/>*/}
      {/*<UserInputOutputMain/>*/}
     </div>
     
