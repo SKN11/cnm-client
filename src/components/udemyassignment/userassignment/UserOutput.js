@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Person.css'
+import './User.css'
 
 const UserOutput = (props) => {
     return(

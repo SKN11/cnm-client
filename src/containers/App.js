@@ -1,17 +1,21 @@
 
-import Contacts from './components/Contacts'
+import Contacts from '../components/contactapp/Contacts'
 
 import './App.css';
-import SignUpCard from './components/SignUpCard';
-import TicTacToeMain from './components/TicTacToeMain';
-import PersonMain from './personcomponents/PersonMain'
-import UserInputOutputMain from './personcomponents/UserInputOutputMain'
-import ListMain from './listassignment/Listmain'
+import SignUpCard from '../components/contactapp/SignUpCard';
+import TicTacToeMain from '../components/tictactoegame/TicTacToeMain';
+import PersonMain from '../components/personcomponents/PersonMain'
+import UserInputOutputMain from '../components/udemyassignment/userassignment/UserInputOutputMain'
+import ListMain from '../components/udemyassignment/listassignment/Listmain'
+
+import Radium,{ StyleRoot } from 'radium'
+
 
 
 //acting as adapter
 function App() {
   return (
+    <StyleRoot>
     <div className="container-fluid">
       <nav>
         <div className="nav-wrapper center-align">
@@ -26,6 +30,7 @@ function App() {
      {/*<ListMain/>*/}
      {/*<UserInputOutputMain/>*/}
     </div>
+    </StyleRoot>
     
   );
 }

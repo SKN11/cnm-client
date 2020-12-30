@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
 
-import Person from './Person'
+import Persons from './Persons'
+import Radium from 'radium'
+import CockpitPerson from '../cockpit/CockpitPerson'
 
 
-export default class PersonMain extends Component{
+
+
+ class PersonMain extends Component{
 
     state = {
         person:[
             {id:'abc1',name:'sam',age:27},
             {id:'abc2',name:'sky',age:13},
             {id:'abc3',name:'euro',age:7}
-        ]
+        ],
+        showPerson:false,
+        showCockpit:true
     }
 
     switchHandler = () =>
@@ -80,36 +86,20 @@ export default class PersonMain extends Component{
     }
 
    render(){
-       const style={
-           backgroundColor:'white',
-           font:'inherit',
-           border:'1px solid blue',
-           cursor:'pointer',
-           padding:'8px'
-       }
+      
 
     let persons = null;
        {/* use of conditional statement method 2*/}
     if(this.state.showPerson){
         persons = (
-            <div>
-                {this.state.person.map((person,index) => {
-                    return <Person 
-                    name={person.name} 
-                    age={person.age}
-                    key={person.id}
-                    changed = {(event) => this.nameChangeHandlerById(event,person.id)}
-                    click={this.deleteFromPersonList.bind(this,index)
-                    }
-                    />
-                }
 
+                <Persons persons={this.state.person}
+                 changed = {this.nameChangeHandlerById}
+                 clicked = {this.deleteFromPersonList}
+                  />
 
-                )}
-
-            </div>
             
-
+           
         /*<div>
             <Person 
             changed={this.nameChangeHandler} 
@@ -130,13 +120,19 @@ export default class PersonMain extends Component{
                 </div>
                 */
             );
+
+           
+
     }
 
     return (
         <div>
-            <h1>Person App (^_^)</h1>
-        <button style={style} className='squarePerson' onClick={this.togglePersons}>Toggle Persons</button><br/>
-        <button style={style} className='squarePerson' onClick={this.switchHandler}>Capital</button><br/>
+            <button onClick={()=> {this.setState({showCockpit:false})} }>RemoveCockpit</button>
+            {
+            (this.state.showCockpit) ?
+            <CockpitPerson showPerson={this.state.showPerson} togglePersons={this.togglePersons} switchHandler={this.switchHandler}/>
+            : null
+            }
         {persons}
        {/* use of conditional statement method 1*/}
         {/* 
@@ -166,3 +162,6 @@ export default class PersonMain extends Component{
     }
 
 }
+
+
+export default Radium(PersonMain);
