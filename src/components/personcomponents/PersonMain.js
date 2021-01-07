@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Persons from './Persons'
 import Radium from 'radium'
 import CockpitPerson from '../cockpit/CockpitPerson'
-
+import AuthContext from '../../context/AuthContext'
 
 
 
@@ -11,12 +11,13 @@ import CockpitPerson from '../cockpit/CockpitPerson'
 
     state = {
         person:[
-            {id:'abc1',name:'sam',age:27},
+            {id:'abc1',name:'sam',age:28},
             {id:'abc2',name:'sky',age:13},
             {id:'abc3',name:'euro',age:7}
         ],
         showPerson:false,
-        showCockpit:true
+        showCockpit:true,
+        isAuthenticated:false
     }
 
     switchHandler = () =>
@@ -84,6 +85,9 @@ import CockpitPerson from '../cockpit/CockpitPerson'
         const isShowPerson = this.state.showPerson;
         this.setState({showPerson:!isShowPerson});
     }
+    loginHandler = () =>{
+        this.setState({isAuthenticated:true});
+    }
 
    render(){
       
@@ -128,12 +132,26 @@ import CockpitPerson from '../cockpit/CockpitPerson'
     return (
         <div>
             <button onClick={()=> {this.setState({showCockpit:false})} }>RemoveCockpit</button>
+            
+            <AuthContext.Provider value={{
+                authenticated:this.state.isAuthenticated,
+                login:this.loginHandler
+
+            }}>
             {
+                
             (this.state.showCockpit) ?
-            <CockpitPerson showPerson={this.state.showPerson} togglePersons={this.togglePersons} switchHandler={this.switchHandler}/>
+            <CockpitPerson 
+            showPerson={this.state.showPerson} 
+            togglePersons={this.togglePersons} 
+            switchHandler={this.switchHandler}
+            login={this.loginHandler}
+            />
             : null
             }
+
         {persons}
+        </AuthContext.Provider>
        {/* use of conditional statement method 1*/}
         {/* 
             this.state.showPerson ?

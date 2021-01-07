@@ -3,6 +3,13 @@ import React,{ Component } from 'react'
 
 export default class AddContact extends Component {
 
+  constructor(props){
+    super(props);
+    this.firstNameRef = React.createRef();
+    this.lastNameRef = React.createRef();
+    this.emailRef = React.createRef();
+}
+
 
     submitContact(event)
     {
@@ -12,9 +19,13 @@ export default class AddContact extends Component {
         //console.log(this.refs.firstName.value);
 
         let contact ={
-            firstName:this.refs.firstName.value,
+          /*firstName:this.refs.firstName.value,
             lastName:this.refs.lastName.value,
             email:this.refs.email.value,
+            */
+            firstName:this.firstNameRef.firstName.value,
+            lastName:this.lastNameRef.lastName.value,
+            email:this.emailRef.email.value,
         }
 
         //console.log(contact);
@@ -41,17 +52,17 @@ export default class AddContact extends Component {
 
             <div className="row">
                 <div className="input-field col s6">
-                  <input placeholder="Placeholder" ref="firstName" type="text" className="validate"/>
+                  <input placeholder="Placeholder" ref={this.firstNameRef} type="text" className="validate"/>
                   <label htmlFor="firstName">First Name</label>
                 </div>
                 <div className="input-field col s6">
-                  <input ref="lastName" type="text" className="validate"/>
+                  <input ref={this.lastNameRef} type="text" className="validate"/>
                   <label htmlFor="lastName">Last Name</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <input ref="email" type="email" className="validate"/>
+                  <input ref={this.emailRef} type="email" className="validate"/>
                   <label htmlFor="email">Email</label>
                 </div>
               </div>
